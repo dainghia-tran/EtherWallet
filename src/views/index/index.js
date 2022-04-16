@@ -1,13 +1,9 @@
 import React from "react";
 import { Paper, Typography } from "@mui/material";
-import { Box } from "@mui/system";
-import createWallet from "../../wallet";
+import { Box } from "@mui/system"
+import { Link } from "react-router-dom";
 
 const IndexPage = () => {
-    const onClickCreate = () => {
-        createWallet();
-    }
-
     return (
         <div >
             <main
@@ -19,9 +15,11 @@ const IndexPage = () => {
                         </Typography>
                         <Box height={50} />
                         <div >
-                            <div onClick={onClickCreate} style={{ height: 50, borderRadius: 25, color: 'white', background: '#05c0a5', display: "flex", alignItems: "center", justifyContent: 'center' }}>
-                                Create new wallet
-                            </div>
+                            <Link to={'/create'}>
+                                <div style={{ height: 50, borderRadius: 25, color: 'white', background: '#05c0a5', display: "flex", alignItems: "center", justifyContent: 'center' }}>
+                                    Create new wallet
+                                </div>
+                            </Link>
                             <Box height={16} />
                             <div style={{ height: 50, borderRadius: 25, color: 'white', background: '#05c0a5', display: "flex", alignItems: "center", justifyContent: 'center' }}>
                                 Import existing wallet
