@@ -4,6 +4,8 @@ import { Box } from "@mui/system"
 import { Link } from "react-router-dom";
 
 const IndexPage = () => {
+    const mnemonic = localStorage.getItem('mnemonic');
+
     return (
         <div >
             <main
@@ -15,13 +17,23 @@ const IndexPage = () => {
                         </Typography>
                         <Box height={50} />
                         <div >
-                            <Link to={'/create'}>
-                                <div style={{ height: 50, borderRadius: 25, color: 'white', background: '#05c0a5', display: "flex", alignItems: "center", justifyContent: 'center' }}>
+                            {
+                                mnemonic ? <div>
+                                    <Link to={'/home'} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                        <div style={{ height: 50, borderRadius: 25, color: 'white', background: '#05c0a5', display: "flex", alignItems: "center", justifyContent: 'center' }}>
+                                            Continue using your existing wallet
+                                        </div>
+                                    </Link>
+                                    <Box height={16} />
+                                </div> : <div />
+                            }
+                            <Link to={'/create'} style={{ textDecoration: 'none', color: 'inherit' }}>
+                                <div style={{ height: 50, borderRadius: 25, border: '2px solid #05c0a5', color: mnemonic ? 'black' : 'while', background: mnemonic ? 'white' : '#05c0a5', display: "flex", alignItems: "center", justifyContent: 'center' }}>
                                     Create new wallet
                                 </div>
-                            </Link>
+                            </Link >
                             <Box height={16} />
-                            <div style={{ height: 50, borderRadius: 25, color: 'white', background: '#05c0a5', display: "flex", alignItems: "center", justifyContent: 'center' }}>
+                            <div style={{ height: 50, borderRadius: 25, border: '2px solid #05c0a5', display: "flex", alignItems: "center", justifyContent: 'center' }}>
                                 Import existing wallet
                             </div>
                         </div>

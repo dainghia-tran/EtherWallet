@@ -44,7 +44,7 @@ const VerificationStep = ({ mnemonic, onClickNext, onClickBack }) => {
                     Go back
                 </Button>
                 <Box width={16} />
-                <Button onClick={onClickVerify} variant="contained" style={{ textTransform: 'none' }} disableElevation>
+                <Button onClick={onClickVerify} variant="contained" style={{ textTransform: 'none', background: '#05c0a5' }} disableElevation>
                     Verify
                 </Button>
             </div>

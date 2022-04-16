@@ -7,7 +7,7 @@ const StepBar = ({ step, stepName }) => {
             {
                 stepName.map((e, index) =>
                     <div key={index} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: "start", height: '100%' }}>
-                        <div style={{ height: 20, width: 20, padding: 8, borderRadius: 18, color: 'white', background: stepName.indexOf(e) == step ? '#05c0a5' : '#f2f2f2', display: "flex", alignItems: "center", justifyContent: 'center' }}>
+                        <div style={{ height: 20, width: 20, padding: 8, borderRadius: 18, color: 'white', background: stepName.indexOf(e) === step ? '#05c0a5' : '#f2f2f2', display: "flex", alignItems: "center", justifyContent: 'center' }}>
                             {stepName.indexOf(e) + 1}
                         </div>
                         <Box height={8} />

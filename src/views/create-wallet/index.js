@@ -40,6 +40,7 @@ const CreateWalletPage = () => {
 
     const onClickAccessWallet = () => {
         localStorage.setItem('mnemonic', mnemonic);
+        window.location.href = '/home';
     }
 
     return (
@@ -60,15 +61,15 @@ const CreateWalletPage = () => {
                             Step {step + 1}. {stepName[step]}
                         </Typography>
                         {
-                            step == 0 ?
+                            step === 0 ?
                                 <GenerateMnemonicStep onClickNext={onClickNext} onClickRegenerate={onClickRegenerate} mnemonic={mnemonic} /> : <div />
                         }
                         {
-                            step == 1 ?
+                            step === 1 ?
                                 <VerificationStep onClickNext={onClickNext} onClickBack={onClickBack} mnemonic={mnemonic} /> : <div />
                         }
                         {
-                            step == 2 ? <WellDoneStep onClickAccessWallet={onClickAccessWallet} /> : <div />
+                            step === 2 ? <WellDoneStep onClickAccessWallet={onClickAccessWallet} /> : <div />
                         }
                     </div>
                 </Paper>
