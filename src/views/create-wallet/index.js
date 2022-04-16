@@ -16,18 +16,22 @@ const stepName = [
 
 const CreateWalletPage = () => {
     const [step, setStep] = useState(0);
-    const [mnemonic, setMnemonic] = useState(null);
+    const [currentWallet, setCurrentWallet] = useState({
+        mnemonic: {
+            phrase: '',
+        }
+    });
 
     useEffect(() => {
         const wallet = createWallet();
         console.log('mnemonic:', wallet.mnemonic.phrase)
-        setMnemonic(wallet.mnemonic.phrase);
+        setCurrentWallet(wallet);
     }, []);
 
     const onClickRegenerate = () => {
         const wallet = createWallet();
         console.log('regen mnemonic:', wallet.mnemonic.phrase)
-        setMnemonic(wallet.mnemonic.phrase);
+        setCurrentWallet(wallet);
     }
 
     const onClickNext = () => {
@@ -39,7 +43,7 @@ const CreateWalletPage = () => {
     }
 
     const onClickAccessWallet = () => {
-        localStorage.setItem('mnemonic', mnemonic);
+        localStorage.setItem('wallet', JSON.stringify(currentWallet));
         window.location.href = '/home';
     }
 
@@ -62,11 +66,11 @@ const CreateWalletPage = () => {
                         </Typography>
                         {
                             step === 0 ?
-                                <GenerateMnemonicStep onClickNext={onClickNext} onClickRegenerate={onClickRegenerate} mnemonic={mnemonic} /> : <div />
+                                <GenerateMnemonicStep onClickNext={onClickNext} onClickRegenerate={onClickRegenerate} mnemonic={currentWallet.mnemonic.phrase} /> : <div />
                         }
                         {
                             step === 1 ?
-                                <VerificationStep onClickNext={onClickNext} onClickBack={onClickBack} mnemonic={mnemonic} /> : <div />
+                                <VerificationStep onClickNext={onClickNext} onClickBack={onClickBack} mnemonic={currentWallet.mnemonic.phrase} /> : <div />
                         }
                         {
                             step === 2 ? <WellDoneStep onClickAccessWallet={onClickAccessWallet} /> : <div />

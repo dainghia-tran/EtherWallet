@@ -15,6 +15,10 @@ export const getWalletFromMnemonic = (mnemonic) => {
     return wallet;
 }
 
+export const getWalletFromPrivateKey = (privateKey) => {
+    return new ethers.Wallet(privateKey);
+}
+
 export const getBalance = async (address) => {
     const balance = await provider.getBalance(address);
     const balanceInEth = ethers.utils.formatEther(balance);

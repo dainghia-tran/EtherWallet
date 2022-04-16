@@ -7,17 +7,18 @@ import WalletInfo from "./components/wallet-info";
 import TransactionHistory from "./components/transaction-history";
 
 const HomePage = () => {
-    const storedMnemonic = localStorage.getItem('mnemonic');
+    const storedWallet = localStorage.getItem('wallet');
     const [wallet, setWallet] = useState(null);
     const [snackBarMsg, setSnackBarMsg] = useState(null);
 
     useEffect(() => {
-        if (storedMnemonic != null) {
-            const fetchedWallet = getWalletFromMnemonic(storedMnemonic);
-            setWallet(fetchedWallet);
-            getBalance(fetchedWallet.address).then(balance => {
-                fetchedWallet.balance = balance;
-                setWallet(fetchedWallet);
+        if (storedWallet != null) {
+            const parsedWallet = JSON.parse(storedWallet);
+            console.log('wallet', storedWallet);
+            setWallet(storedWallet);
+            getBalance(parsedWallet.address).then(balance => {
+                parsedWallet.balance = balance;
+                setWallet(parsedWallet);
             });
         }
     }, []);
@@ -34,7 +35,7 @@ const HomePage = () => {
 
         setSnackBarMsg(null);
     };
-    if (storedMnemonic == null) {
+    if (storedWallet == null) {
         return <NotFoundWallet />;
     }
 
