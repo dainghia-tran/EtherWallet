@@ -1,7 +1,7 @@
 import React from "react";
 import NotFoundWallet from "./components/not-found-wallet";
 import { useEffect, useState } from "react";
-import { getWalletFromMnemonic, getBalance } from "../../wallet";
+import { getBalance } from "../../wallet";
 import { Box, Snackbar, Alert } from "@mui/material";
 import WalletInfo from "./components/wallet-info";
 import TransactionHistory from "./components/transaction-history";
@@ -15,7 +15,7 @@ const HomePage = () => {
         if (storedWallet != null) {
             const parsedWallet = JSON.parse(storedWallet);
             console.log('wallet', storedWallet);
-            setWallet(storedWallet);
+            setWallet(parsedWallet);
             getBalance(parsedWallet.address).then(balance => {
                 parsedWallet.balance = balance;
                 setWallet(parsedWallet);
@@ -45,13 +45,13 @@ const HomePage = () => {
                 <Alert severity={(snackBarMsg != null && snackBarMsg.startsWith("Error:")) ? 'error' : 'success'}>{snackBarMsg}</Alert>
             </Snackbar>
             <Box p={2}>
-                <div style={{ display: 'flex' }}>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <div style={{ flex: 1, }}>
                         <WalletInfo wallet={wallet} onClickCopyAddress={onClickCopyAddress} />
                     </div>
-                    <Box width={16} />
+                    <Box height={16} />
                     <div style={{ flex: 1, }}>
-                        <TransactionHistory />
+                        <TransactionHistory walletAddress={wallet?.address} />
                     </div>
                 </div>
             </Box>

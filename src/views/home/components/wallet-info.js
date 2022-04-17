@@ -22,7 +22,7 @@ const WalletInfo = ({ wallet, onClickCopyAddress }) => {
                             Balance:
                         </Typography>
                         <Typography fontWeight={700}>
-                            {wallet != null ? wallet.balance : null} ETH
+                            {wallet != null ? wallet.balance : null} Ether
                         </Typography>
                     </div>
                 </div>
