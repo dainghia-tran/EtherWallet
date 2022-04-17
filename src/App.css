@@ -31,3 +31,7 @@
 ::-webkit-scrollbar {
   display: none;
 }
+
+.linear-gradient-background{
+  background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(1, 145, 148, 1) 51%, rgba(0, 212, 255, 1) 100%);
+}

@@ -10,10 +10,10 @@ const WalletInfo = ({ wallet, onClickCopyAddress }) => {
     }
 
     return (
-        <Paper elevation={0} style={{ backgroud: 'white', borderRadius: 16, padding: 16 }}>
+        <Paper className="linear-gradient-background" elevation={0} style={{ height: 210, borderRadius: 16, padding: 16 }}>
             <div style={{ display: 'flex' }}>
                 <div style={{ flex: 1 }}>
-                    <div style={{ display: 'flex' }}>
+                    <div style={{ display: 'flex', color: 'white' }}>
                         <Typography style={{ marginRight: 8 }}>
                             Wallet address:
                         </Typography>
@@ -23,7 +23,7 @@ const WalletInfo = ({ wallet, onClickCopyAddress }) => {
                         <Box width={16} />
                         <ContentCopyRoundedIcon onClick={onClickCopyAddress} />
                     </div>
-                    <div style={{ display: 'flex' }}>
+                    <div style={{ display: 'flex', color: 'white' }}>
                         <Typography style={{ marginRight: 8 }}>
                             Balance:
                         </Typography>

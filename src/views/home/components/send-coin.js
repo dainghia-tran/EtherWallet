@@ -48,7 +48,7 @@ const SendCoin = ({ wallet, setSnackBarMsg }) => {
     }
 
     return (
-        <Paper elevation={0} style={{ backgroud: 'white', borderRadius: 16, padding: 16 }}>
+        <Paper elevation={0} style={{ height: 210, backgroud: 'white', borderRadius: 16, padding: 16 }}>
             <div style={{ display: 'flex' }}>
                 <div style={{ flex: 1 }}>
                     <div style={{ display: 'flex' }}>
