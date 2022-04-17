@@ -4,7 +4,7 @@ import { Box } from "@mui/system"
 import { Link } from "react-router-dom";
 
 const IndexPage = () => {
-    const wallet = localStorage.getItem('wallet');
+    const walletPK = localStorage.getItem('wallet_private_key');
 
     return (
         <div >
@@ -18,7 +18,7 @@ const IndexPage = () => {
                         <Box height={50} />
                         <div >
                             {
-                                wallet ? <div>
+                                walletPK ? <div>
                                     <Link to={'/home'} style={{ textDecoration: 'none', color: 'inherit' }}>
                                         <div style={{ height: 50, borderRadius: 25, color: 'white', background: '#05c0a5', display: "flex", alignItems: "center", justifyContent: 'center' }}>
                                             Continue using your existing wallet
@@ -28,7 +28,7 @@ const IndexPage = () => {
                                 </div> : <div />
                             }
                             <Link to={'/create'} style={{ textDecoration: 'none', color: 'inherit' }}>
-                                <div style={{ height: 50, borderRadius: 25, border: '2px solid #05c0a5', color: wallet ? 'black' : 'while', background: wallet ? 'white' : '#05c0a5', display: "flex", alignItems: "center", justifyContent: 'center' }}>
+                                <div style={{ height: 50, borderRadius: 25, border: '2px solid #05c0a5', color: walletPK ? 'black' : 'while', background: walletPK ? 'white' : '#05c0a5', display: "flex", alignItems: "center", justifyContent: 'center' }}>
                                     Create new wallet
                                 </div>
                             </Link >

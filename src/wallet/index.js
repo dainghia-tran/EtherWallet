@@ -24,3 +24,19 @@ export const getBalance = async (address) => {
     const balanceInEth = ethers.utils.formatEther(balance);
     return balanceInEth;
 }
+
+export const sendEth = async (wallet, toAddress, amount) => {
+    try {
+        const walletSigner = wallet.connect(provider);
+
+        const tx = {
+            to: toAddress,
+            value: ethers.utils.parseEther(amount),
+        }
+
+        const result = await walletSigner.sendTransaction(tx);
+        return await result.wait();
+    } catch (err) {
+        throw err;
+    }
+}

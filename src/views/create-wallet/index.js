@@ -43,7 +43,7 @@ const CreateWalletPage = () => {
     }
 
     const onClickAccessWallet = () => {
-        localStorage.setItem('wallet', JSON.stringify(currentWallet));
+        localStorage.setItem('wallet_private_key', currentWallet.privateKey);
         window.location.href = '/home';
     }
 

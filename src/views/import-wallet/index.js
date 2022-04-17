@@ -13,7 +13,7 @@ const ImportWalletPage = () => {
         if (type === 0) {
             try {
                 const wallet = getWalletFromMnemonic(value)
-                localStorage.setItem('wallet', JSON.stringify(wallet));
+                localStorage.setItem('wallet_private_key', wallet.privateKey);
             } catch (err) {
                 console.log(err);
                 setErrorMsg("Invalid Mnemonic");
@@ -22,7 +22,7 @@ const ImportWalletPage = () => {
         } else {
             try {
                 const wallet = getWalletFromPrivateKey(value)
-                localStorage.setItem('wallet', JSON.stringify(wallet));
+                localStorage.setItem('wallet_private_key', wallet.privateKey);
             } catch (err) {
                 console.log(err);
                 setErrorMsg("Invalid private key");
